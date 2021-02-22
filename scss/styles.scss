@@ -1,0 +1,170 @@
+// Base Colors
+
+$darkGrayisBlue: hsl(217, 19%, 35%);
+$darkBlue: hsl(214, 17%, 51%);
+$grayisBlue: hsl(212, 23%, 69%);
+$lightGrayisBlue: hsl(210, 46%, 95%);
+
+$breakpoint-tablet: 768px;
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    font-size: 13px;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: $lightGrayisBlue;
+
+    .container {
+        position: relative;
+        width: 95%;
+        max-width: 70rem;
+        border-radius: 1rem;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 2.5rem 5rem -12px;
+
+        &__img {
+            height: 23rem;
+            overflow: hidden;
+            .main__img {
+                border-radius: 1rem 1rem 0 0;
+                width: 100%;
+            }
+        }
+
+        &__article {
+            padding: 2rem 3rem 0 3rem;
+
+            .article__header {
+                color: $darkGrayisBlue;
+            }
+
+            .article__content {
+                color: $grayisBlue;
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        &__author {
+            display: flex;
+            align-items: center;
+            padding-bottom: 1rem;
+
+            .avatar__img {
+                display: inline-block;
+                border-radius: 50%;
+                width: 5rem;
+                margin-right: 2rem;
+            }
+
+            .container__info {
+                display: inline-block;
+
+                .author__name {
+                    font-weight: 700;
+                    color: $darkGrayisBlue;
+                }
+
+                .article__date {
+                    color: $darkBlue;
+                }
+            }
+
+            .container__social {
+                display: flex;
+                flex: 1;
+                justify-content: flex-end;
+                .share__button {
+                    z-index: 1;
+                    outline: none;
+                    cursor: pointer;
+                    text-decoration: none;
+                    border: none;
+                    padding: 0.6rem;
+                    background-color: $lightGrayisBlue;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        &--active-state {
+            position: absolute;
+            display: none;
+            align-items: center;
+            width: 100%;
+            padding: 1.7rem 3rem 1.7rem 3rem;
+            border-radius: 0 0 1rem 1rem;
+            bottom: 0;
+            background-color: $darkGrayisBlue;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+
+            .share__text {
+                color: $lightGrayisBlue;
+                margin-right: 1.5rem;
+                letter-spacing: 1rem;
+            }
+
+            .social__links {
+                * {
+                    padding: 0.2rem 0.3rem;
+                }
+            }
+        }
+
+        &--opacity-full {
+            opacity: 1 !important;
+        }
+
+        &--visible {
+            display: flex !important;
+        }
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .container {
+        display: flex;
+
+        &__img {
+            height: auto !important;
+            .main__img {
+                border-radius: 1rem 0 0 1rem !important;
+                height: 100%;
+            }
+        }
+
+        &--active-state {
+            width: auto !important;
+            right: -9rem !important;
+            bottom: 7rem !important;
+            border-radius: 1rem !important;
+
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border: 0.625em solid transparent;
+                border-top-color: $darkGrayisBlue;
+                border-bottom: 0;
+                margin-left: -0.625em;
+                margin-bottom: -0.625em;
+            }
+        }
+    }
+}
